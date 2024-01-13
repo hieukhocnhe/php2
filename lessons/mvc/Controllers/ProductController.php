@@ -7,16 +7,16 @@ class ProductController
     function show()
     {
         $product = new Product();
-        $listProduct = $product->getListProduct();
+        $listProduct = $product->show();
         include_once './Views/layout/header.php';
-        include_once './Views/Product/showProduct.php';
+        include_once './Views/Product/show.php';
         include_once './Views/layout/footer.php';
 
     }
 
     function create()
     {
-        include_once './Views/Product/createProduct.php';
+        include_once './Views/Product/create.php';
 
     }
 

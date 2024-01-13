@@ -2,15 +2,13 @@
 
 include_once 'db.php';
 
-class Product extends Database
+class Category extends Database
 {
     function show()
     {
-        $sql = "SELECT * FROM products";
+        $sql = "SELECT * FROM categories";
 
         return $this->getData($sql);
-    }
-    function create() {
     }
 
 }
