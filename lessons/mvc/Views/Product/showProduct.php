@@ -1,8 +1,6 @@
-
-
 <div class="container">
     <h1 class="text-center m-5">Danh sách sản phẩm</h1>
-    <a class="btn btn-primary my-3" href="?url=addProduct">Thêm sản phẩm</a>
+    <a class="btn btn-primary my-3" href="?url=create">Thêm sản phẩm</a>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -31,7 +29,7 @@
                             <?= $description ?>
                         </td>
                         <td>
-                            <a class="btn btn-warning" href="?url=editProduct">Sửa</a>
+                            <a class="btn btn-warning" href="?url=update">Sửa</a>
                             <button class="btn btn-danger" type="submit"
                                 onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</button>
                         </td>

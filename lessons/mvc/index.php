@@ -6,16 +6,20 @@ $url = isset($_GET['url']) ? $_GET['url'] : '/';
 
 switch ($url) {
     case '/':
-        listProduct();
+        $productController = new ProductController();
+        $productController->show();
         break;
-    case 'addProduct':
-        addProduct();
+    case 'create':
+        $productController = new ProductController();
+        $productController->create();
         break;
-    case 'editProduct':
-        editProduct();
+    case 'update':
+        $productController = new ProductController();
+        $productController->update();
         break;
-    case 'delProduct':
-        deleteProduct();
+    case 'destroy':
+        $productController = new ProductController();
+        $productController->destroy();
         break;
     default:
         # code...

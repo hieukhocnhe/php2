@@ -1,26 +1,30 @@
 <?php
 include_once "env.php";
-function getConnect()
+class Database
 {
-    $connect = new PDO(
-        "mysql:host=" . DBHOST
-        . ";dbname=" . DBNAME
-        . ";charset=" . DBCHARSET,
-        DBUSER,
-        DBPASS
-    );
-    return $connect;
+    public function getConnect()
+    {
+        $connect = new PDO(
+            "mysql:host=" . DBHOST
+            . ";dbname=" . DBNAME
+            . ";charset=" . DBCHARSET,
+            DBUSER,
+            DBPASS
+        );
+        return $connect;
+    }
+    public function getData($query, $getAll = true)
+    {
+        $conn = $this->getConnect();
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+        if ($getAll) {
+            return $stmt->fetchAll();
+        }
+        return $stmt->fetch();
+    }
 }
 
-function getData($query, $getAll = true)
-{
-    $conn = getConnect();
-    $stmt = $conn->prepare($query);
-    $stmt->execute();
-    if ($getAll) {
-        return $stmt->fetchAll();
-    }
-    return $stmt->fetch();
-}
+
 
 ?>

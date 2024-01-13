@@ -2,11 +2,15 @@
 
 include_once 'db.php';
 
-function getListProduct()
+class Product extends Database
 {
-    $sql = "SELECT * FROM products";
+    function getListProduct()
+    {
+        $sql = "SELECT * FROM products";
 
-    return getData($sql);
+        return $this->getData($sql);
+    }
+
 }
 
 

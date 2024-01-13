@@ -2,33 +2,37 @@
 
 include_once './Models/Product.php';
 
-function listProduct()
+class ProductController
 {
+    function show()
+    {
+        $product = new Product();
+        $listProduct = $product->getListProduct();
+        include_once './Views/layout/header.php';
+        include_once './Views/Product/showProduct.php';
+        include_once './Views/layout/footer.php';
 
-    $listProduct = getListProduct();
-    include_once './Views/layout/header.php';
-    include_once './Views/Product/listProduct.php';
-    include_once './Views/layout/footer.php';
+    }
 
+    function create()
+    {
+        include_once './Views/Product/createProduct.php';
+
+    }
+
+    function update()
+    {
+        echo "Update Product";
+
+    }
+
+    function destroy()
+    {
+        echo "Destroy Product";
+
+    }
 }
 
-function addProduct()
-{
-    include_once './Views/Product/addProduct.php';
-
-}
-
-function editProduct()
-{
-    echo "Edit Product";
-
-}
-
-function deleteProduct()
-{
-    echo "Delete Product";
-
-}
 
 
 ?>
