@@ -111,7 +111,7 @@ class GiangVien extends ConNguoi
         echo "Tổng lương: " . $this->tongLuong() . "<br>";
     }
 }
-echo "Tạo một đối tượng con người : <br>";
+echo "Tạo mới một đối tượng con người : <br>";
 $conNguoi1 = new ConNguoi();
 $conNguoi1->setName('Trần Chung Hiếu');
 $conNguoi1->setAddress('Hà Nội');
@@ -121,12 +121,12 @@ $conNguoi1->setPhoneNumber('0326239019');
 $conNguoi1->print();
 echo "<br>";
 
-echo "Tạo một đối tượng học sinh : <br>";
+echo "Tạo mới một đối tượng học sinh : <br>";
 $hocSinh1 = new HocSinh();
 $hocSinh1->setName('Đỗ Hồng Quân');
 $hocSinh1->setAddress('Hà Nội');
 $hocSinh1->setYearold(2002);
-$hocSinh1->setEmail('quandh.com');
+$hocSinh1->setEmail('quandh@gmail.com');
 $hocSinh1->setPhoneNumber('0983213131');
 $hocSinh1->setDiemToan(9);
 $hocSinh1->setDiemLy(9);
@@ -134,12 +134,12 @@ $hocSinh1->setDiemHoa(8);
 $hocSinh1->print();
 echo "<br>";
 
-echo "Tạo một đối tượng giảng viên : <br>";
+echo "Tạo mới một đối tượng giảng viên : <br>";
 $giangVien1 = new GiangVien();
 $giangVien1->setName('Nguyễn Thành Trung');
 $giangVien1->setAddress('Hà Nội');
 $giangVien1->setYearold(1999);
-$giangVien1->setEmail('trungnt173.com');
+$giangVien1->setEmail('trungnt173@gmail.com');
 $giangVien1->setPhoneNumber('0987654321');
 $giangVien1->setLuongCB(100000);
 $giangVien1->setSoGioDay(200);
