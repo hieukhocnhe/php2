@@ -121,7 +121,7 @@ $conNguoi1->setPhoneNumber('0326239019');
 $conNguoi1->print();
 echo "<br>";
 
-echo "Tạo mới một đối tượng học sinh : <br>";
+echo "Tạo mới một đối tượng học sinh kế thừa đối tượng con người : <br>";
 $hocSinh1 = new HocSinh();
 $hocSinh1->setName('Đỗ Hồng Quân');
 $hocSinh1->setAddress('Hà Nội');
@@ -134,7 +134,7 @@ $hocSinh1->setDiemHoa(8);
 $hocSinh1->print();
 echo "<br>";
 
-echo "Tạo mới một đối tượng giảng viên : <br>";
+echo "Tạo mới một đối tượng giảng viên kế thừa đối tượng con người : <br>";
 $giangVien1 = new GiangVien();
 $giangVien1->setName('Nguyễn Thành Trung');
 $giangVien1->setAddress('Hà Nội');
