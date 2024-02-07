@@ -4,10 +4,10 @@ namespace App\Models;
 
 use App\Models\BaseModel;
 
-class Product extends BaseModel
+class User extends BaseModel
 {
-    protected $table = 'products';
-    public function getProducts()
+    protected $table = 'users';
+    public function getUsers()
     {
         $sql = "SELECT * FROM $this->table;";
         $this->setQuery($sql);
@@ -15,15 +15,15 @@ class Product extends BaseModel
         return $this->loadAllRows();
     }
 
-    public function addProduct($id, $name, $price)
+    public function addUser($id, $name)
     {
-        $sql = "INSERT INTO $this->table VALUES ( ?, ?, ?);";
+        $sql = "INSERT INTO $this->table VALUES ( ?, ?);";
         $this->setQuery($sql);
 
-        return $this->execute([$id, $name, $price]);
+        return $this->execute([$id, $name]);
     }
 
-    public function detailProduct($id)
+    public function detailUser($id)
     {
         $sql = "SELECT * FROM $this->table WHERE id = ?;";
         $this->setQuery($sql);
@@ -31,15 +31,15 @@ class Product extends BaseModel
         return $this->loadRow([$id]);
     }
 
-    public function updateProduct($id, $name, $price)
+    public function updateUser($id, $name)
     {
-        $sql = "UPDATE $this->table SET name = ?, price = ? WHERE id = ?;";
+        $sql = "UPDATE $this->table SET name = ? WHERE id = ?;";
         $this->setQuery($sql);
 
-        return $this->execute([$name, $price, $id]);
+        return $this->execute([$name, $id]);
     }
 
-    public function deleteProduct($id)
+    public function deleteUser($id)
     {
         $sql = "DELETE FROM $this->table WHERE id = ?;";
         $this->setQuery($sql);

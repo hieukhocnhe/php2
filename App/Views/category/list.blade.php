@@ -1,9 +1,9 @@
 @extends('layout.main')
 @section('content')
 <h5>
-    Danh sách sản phẩm
+    Danh sách danh mục
 </h5>
-<a href="{{route ('add-product')}}" class="btn btn-sm btn-primary my-2">Thêm sản phẩm</a>
+<a href="{{route ('add-category')}}" class="btn btn-sm btn-primary my-2">Thêm danh mục</a>
 <div
     class="table-responsive"
 >
@@ -13,20 +13,18 @@
         <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Tên sản phẩm</th>
-                <th scope="col">Giá</th>
+                <th scope="col">Tên danh mục</th>
                 <th scope="col">Chức năng</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($products as $value)
+            @foreach($categories as $value)
             <tr class="">
                 <td>{{$value->id}}</td>
                 <td>{{$value->name}}</td>
-                <td>{{number_format($value->price)}}</td>
                 <td>
-                    <a href="{{route ('detail-product/'. $value->id)}}" class="btn btn-sm btn-warning">Sửa</a>
-                    <a href="{{route ('delete-product/'. $value->id)}}" class="btn btn-sm btn-danger">Xóa</a>
+                    <a href="{{route ('detail-category/'. $value->id)}}" class="btn btn-sm btn-warning">Sửa</a>
+                    <a href="{{route ('delete-category/'. $value->id)}}" class="btn btn-sm btn-danger">Xóa</a>
                 </td>
             </tr>
             @endforeach

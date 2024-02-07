@@ -1,6 +1,10 @@
 <?php
 
 use Phroute\Phroute\RouteCollector;
+use App\Controllers\ProductController;
+use App\Controllers\UserController;
+use App\Controllers\CategoryController;
+
 
 $url = !isset($_GET['url']) ? "/" : $_GET['url'];
 
@@ -16,13 +20,33 @@ $router->filter('auth', function () {
 $router->get('/', function () {
     return "trang chủ";
 });
-//định nghĩa đường dẫn trỏ đến Product Controller
-$router->get('list-product', [App\Controllers\ProductController::class, 'index']);
-$router->get('add-product', [App\Controllers\ProductController::class, 'addProduct']);
-$router->post('post-product', [App\Controllers\ProductController::class, 'postProduct']);
-$router->get('detail-product/{id}', [App\Controllers\ProductController::class, 'detail']);
 
-$router->post('edit-product/{id}', [App\Controllers\ProductController::class, 'editProduct']);
+//Product
+
+$router->get('list-product', [ProductController::class, 'index']);
+$router->get('add-product', [ProductController::class, 'addProduct']);
+$router->post('post-product', [ProductController::class, 'postProduct']);
+$router->get('detail-product/{id}', [ProductController::class, 'detail']);
+$router->post('edit-product/{id}', [ProductController::class, 'editProduct']);
+$router->post('delete-product/{id}', [ProductController::class, 'deleteProduct']);
+
+// User
+
+$router->get('list-user', [UserController::class, 'index']);
+$router->get('add-user', [UserController::class, 'addUser']);
+$router->post('post-user', [UserController::class, 'postUser']);
+$router->get('detail-user/{id}', [UserController::class, 'detail']);
+$router->post('edit-user/{id}', [UserController::class, 'editUser']);
+$router->post('delete-user/{id}', [UserController::class, 'deleteUser']);
+
+// Category
+
+$router->get('list-category', [CategoryController::class, 'index']);
+$router->get('add-category', [CategoryController::class, 'addCategory']);
+$router->post('post-category', [CategoryController::class, 'postCategory']);
+$router->get('detail-category/{id}', [CategoryController::class, 'detail']);
+$router->post('edit-category/{id}', [CategoryController::class, 'editCategory']);
+$router->post('delete-category/{id}', [CategoryController::class, 'deleteCategory']);
 
 $dispatcher = new Phroute\Phroute\Dispatcher($router->getData());
 
