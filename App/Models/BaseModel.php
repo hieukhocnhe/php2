@@ -3,7 +3,6 @@
 
 namespace App\Models;
 
-include_once './vendor/env.php';
 
 use PDO;
 

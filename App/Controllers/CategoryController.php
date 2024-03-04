@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
 use App\Models\Category;
 
 class CategoryController extends BaseController
@@ -32,14 +31,16 @@ class CategoryController extends BaseController
         if (isset($_POST['add'])) {
             $errs = [];
             if (empty($_POST['name'])) {
-                $errs[] = 'Không được để trống trường này !';
+                $errs[] = 'Không được để trống trường tên sản phẩm !';
             }
             if (count($errs) >= 1) {
                 flash('errors', $errs, 'add-category');
             } else {
                 $check = $this->category->addCategory(null, $_POST['name']);
                 if ($check) {
-                    flash('success', "Thêm thành công !", 'add-category');
+                    flash('success', "Thêm sản phẩm thành công !", 'add-category');
+                } else {
+                    flash('errors', "Thêm sản phẩm không thành công !", 'add-category');
                 }
             }
         }
@@ -57,15 +58,19 @@ class CategoryController extends BaseController
         if (isset($_POST['edit'])) {
             $errs = [];
             if (empty($_POST['name'])) {
-                $errs[] = 'Không được để trống trường này !';
+                $errs[] = 'Không được để trống trường tên danh mục !';
             }
             if (count($errs) >= 1) {
-                flash('errors', $errs, 'edit-category');
+                flash('errors', $errs, 'detail-category/' . $id);
             } else {
                 $check = $this->category->updateCategory($id, $_POST['name']);
                 if ($check) {
                     $editRoute = 'detail-category/' . $id;
-                    flash('success', "Sửa thành công !", $editRoute);
+                    if ($check) {
+                        flash('success', "Sửa danh mục thành công !", '');
+                    } else {
+                        flash('errors', "Sửa danh mục không thành công !", $editRoute);
+                    }
                 }
             }
         }
@@ -73,8 +78,11 @@ class CategoryController extends BaseController
 
     public function deleteCategory($id)
     {
-        $categories = $this->category->deleteCategory($id);
-
-        return $this->render('category.list', ['categories' => $categories]);
+        $check = $this->category->deleteCategory($id);
+        if ($check) {
+            flash('success', 'Xóa danh mục thành công !', 'list-category');
+        } else {
+            flash('errors', 'Xóa danh mục không thành công !', 'list-category');
+        }
     }
 }

@@ -26,7 +26,7 @@
                 <td>{{number_format($value->price)}}</td>
                 <td>
                     <a href="{{route ('detail-product/'. $value->id)}}" class="btn btn-sm btn-warning">Sửa</a>
-                    <a href="{{route ('delete-product/'. $value->id)}}" class="btn btn-sm btn-danger">Xóa</a>
+                    <a href="{{route ('delete-product/'. $value->id)}}" class="btn btn-sm btn-danger" onclick="return confirm('Bạn có thực sự muốn xóa ?')">Xóa</a>
                 </td>
             </tr>
             @endforeach

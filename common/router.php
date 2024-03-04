@@ -17,9 +17,9 @@ $router->filter('auth', function () {
     }
 });
 
-$router->get('/', function () {
-    return "trang chủ";
-});
+
+$router->get('/', [App\Controllers\CategoryController::class, 'index']);
+
 
 //Product
 
@@ -28,7 +28,7 @@ $router->get('add-product', [ProductController::class, 'addProduct']);
 $router->post('post-product', [ProductController::class, 'postProduct']);
 $router->get('detail-product/{id}', [ProductController::class, 'detail']);
 $router->post('edit-product/{id}', [ProductController::class, 'editProduct']);
-$router->post('delete-product/{id}', [ProductController::class, 'deleteProduct']);
+$router->get('delete-product/{id}', [ProductController::class, 'deleteProduct']);
 
 // User
 
@@ -37,7 +37,7 @@ $router->get('add-user', [UserController::class, 'addUser']);
 $router->post('post-user', [UserController::class, 'postUser']);
 $router->get('detail-user/{id}', [UserController::class, 'detail']);
 $router->post('edit-user/{id}', [UserController::class, 'editUser']);
-$router->post('delete-user/{id}', [UserController::class, 'deleteUser']);
+$router->get('delete-user/{id}', [UserController::class, 'deleteUser']);
 
 // Category
 
@@ -46,7 +46,7 @@ $router->get('add-category', [CategoryController::class, 'addCategory']);
 $router->post('post-category', [CategoryController::class, 'postCategory']);
 $router->get('detail-category/{id}', [CategoryController::class, 'detail']);
 $router->post('edit-category/{id}', [CategoryController::class, 'editCategory']);
-$router->post('delete-category/{id}', [CategoryController::class, 'deleteCategory']);
+$router->get('delete-category/{id}', [CategoryController::class, 'deleteCategory']);
 
 $dispatcher = new Phroute\Phroute\Dispatcher($router->getData());
 

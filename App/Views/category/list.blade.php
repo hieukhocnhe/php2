@@ -24,7 +24,7 @@
                 <td>{{$value->name}}</td>
                 <td>
                     <a href="{{route ('detail-category/'. $value->id)}}" class="btn btn-sm btn-warning">Sửa</a>
-                    <a href="{{route ('delete-category/'. $value->id)}}" class="btn btn-sm btn-danger">Xóa</a>
+                    <a href="{{route ('delete-category/'. $value->id)}}" class="btn btn-sm btn-danger" onclick="return confirm('Bạn có thực sự muốn xóa ?')">Xóa</a>
                 </td>
             </tr>
             @endforeach

@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
 use App\Models\User;
 
 class UserController extends BaseController
@@ -32,14 +31,16 @@ class UserController extends BaseController
         if (isset($_POST['add'])) {
             $errs = [];
             if (empty($_POST['name'])) {
-                $errs[] = 'Không được để trống trường này !';
+                $errs[] = 'Không được để trống trường tên người dùng !';
             }
             if (count($errs) >= 1) {
                 flash('errors', $errs, 'add-user');
             } else {
                 $check = $this->user->addUser(null, $_POST['name']);
                 if ($check) {
-                    flash('success', "Thêm thành công !", 'add-user');
+                    flash('success', "Thêm người dùng thành công !", 'add-user');
+                } else {
+                    flash('errors', "Thêm người dùng không thành công !", 'add-user');
                 }
             }
         }
@@ -57,15 +58,17 @@ class UserController extends BaseController
         if (isset($_POST['edit'])) {
             $errs = [];
             if (empty($_POST['name'])) {
-                $errs[] = 'Không được để trống trường này !';
+                $errs[] = 'Không được để trống trường tên người dùng !';
             }
             if (count($errs) >= 1) {
-                flash('errors', $errs, 'edit-user');
+                flash('errors', $errs, 'detail-user/' . $id);
             } else {
                 $check = $this->user->updateUser($id, $_POST['name']);
+                $editRoute = 'detail-user/' . $id;
                 if ($check) {
-                    $editRoute = 'detail-user/' . $id;
-                    flash('success', "Sửa thành công !", $editRoute);
+                    flash('success', "Sửa người dùng thành công !", 'list-user');
+                } else {
+                    flash('errors', "Sửa người dùng không thành công !", $editRoute);
                 }
             }
         }
@@ -73,8 +76,11 @@ class UserController extends BaseController
 
     public function deleteUser($id)
     {
-        $users = $this->user->deleteUser($id);
-
-        return $this->render('user.list', ['users' => $users]);
+        $check = $this->user->deleteUser($id);
+        if ($check) {
+            flash('success', 'Xóa người dùng thành công !', 'list-user');
+        } else {
+            flash('errors', 'Xóa người dùng không thành công !', 'list-user');
+        }
     }
 }
